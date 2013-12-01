@@ -1,0 +1,17 @@
+{
+	"name": "sint2013.sjorsvanderheijden.nl",
+	"description": "On-line suprise 2013 voor Sjors",
+	"private": true,
+	"version": "0.0.1",
+	"dependencies": {
+		"underscore": ">=1.5.2",
+    "async": ">=0",
+		"express": ">= 3.1",
+		"hbs" : ">= 2.4.0"
+	},
+	"engines": {
+		"noide": "0.10.x",
+		"npm": "1.2.x"
+	}
+}
+
