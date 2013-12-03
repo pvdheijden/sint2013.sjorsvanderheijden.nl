@@ -44,10 +44,41 @@
             return true;
           }
           {{/each}}
+          
+          $("#hint").attr("hidden", "hidden")
+          $("#modal").modal();
+          
           return false;
         }); 
+        
+        $("#showHint").click(function() {
+          $("#hint").removeAttr("hidden");
+        });
       });
     </script>
+    
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="modalLabel"><span class="glyphicon glyphicon-exclamation-sign"></span>  {{title}}</h4>
+          </div>
+          <div class="modal-body">
+            <p>
+              Dat is nu jammer, het antwoord is fout - of het antwoord wordt niet begrepen!
+              Er is misschien wel een <button type="button" id="showHint" class="btn btn-xs btn-info">Hint</button> ...
+            </p>
+            <div id="hint" hidden>
+              <p>
+                {{hint}}
+              </p>
+            </div>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
   </head>
 
   <body>
