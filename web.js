@@ -68,11 +68,12 @@ var questions = [
 },
 {
   title: "Eten, verteren, naar de WC en dan",
-  subtitle: "Je zou denken dat hij dat toch wel weet",
+  subtitle: "Tja, wat doen je dan?",
   imageURL: "/5-wc.jpg",
   question: "Na naar de WC te zijn geweest moet je ook ... en ...",
   answerKeywords: [
-    { tag: "billen afvegen en doortrekken" }
+  { tag: "billen afvegen en doortrekken" },
+  { tag: "billen afvegen en doorspoelen" }
   ],
   hint: "Niet te geloven dat je hier een hint voor nodig hebt :-)",
   nextURL: "/questions/5"
@@ -81,7 +82,7 @@ var questions = [
   title: "De piano",
   subtitle: "wanneer wordt het concert gegeven?",
   imageURL: "/6-piano.jpg",
-  question: "Elke week gaar Sjors naar de pianoles, maar dan moet je wel elke dag ...",
+  question: "Elke week gaar Sjors naar de pianoles, maar elke dag ...",
   answerKeywords: [
     { tag: "oefenen" }
   ],
@@ -90,7 +91,7 @@ var questions = [
 },
 {
   title: "Computer spelletjes",
-  subtitle: "... niet alleen op de computer, maar ook PS3, Wii en de X-Box",
+  subtitle: "... niet alleen op de computer, maar ook PS3, Wii enz.",
   imageURL: "/7-minecraft.png",
   question: "Hebben we hier te maken met een probleem?",
   answerKeywords: [
@@ -104,14 +105,14 @@ var questions = [
   title: "YouTube filmpjes",
   subtitle: "niet alleen kijken",
   imageURL: "/8-youtube.png",
-  question: "Er worden wel heeeeel veel filmpjes bekeken, maar gelukkig worden er ook filmpjes ...",
+  question: "Niet alleen filmpjes kijken, maar gelukkig ook ...",
   answerKeywords: [
     { tag: "maken" },
     { tag: "gemaakt" },
     { tag: "upload"}
   ],
   hint: "kaaskipcraft van der heijden - als eerste in de familie - heeft het 4 keer gedaan",
-  nextURL: "/questions/7"
+  nextURL: "/finish"
 }
 ];
 
@@ -125,7 +126,15 @@ app.get("/questions/:id", function(request, response) {
   response.render("question", questions[id]);
 })
 
+app.get("/finish", function(request, response) {
+  response.render("finish", {
+    title: "Alle vragen goed!",
+    subtitle: "de prijs kan worden opgehaald bij de organisatie",
+    imageURL: "/cadeau.jpg"
+  });
+})
+
 var port = process.env.PORT || 5000;
-app.listen(port, function() {
+app.listen(port, "0.0.0.0", function() {
 	console.log("Listening on " + port);
 });
