@@ -4,20 +4,18 @@ var async = require("async");
 var express = require("express");
 
 var app = express();
-app.configure(function() {
-	app.use(express.logger("default"));
-	
-	app.use(express.bodyParser());
-	
-	app.set('view engine', 'html');
-	app.engine('html', require('hbs').__express);
-	app.set("views", __dirname + "/views", { maxAge: 3600000 });
-	app.use(express.static(__dirname + "/static", { maxAge: 365 * 86400000 }));
-	
-	app.use(express.compress());
-	
-	app.use(app.router);
-});
+  app.use(express.logger("default"));
+
+  app.use(express.bodyParser());
+
+  app.set('view engine', 'html');
+  app.engine('html', require('hbs').__express);
+  app.set("views", __dirname + "/views", { maxAge: 3600000 });
+  app.use(express.static(__dirname + "/static", { maxAge: 365 * 86400000 }));
+
+  app.use(express.compress());
+
+  app.use(app.router);
 
 var questions = [
 {
@@ -124,7 +122,7 @@ app.get("/questions/:id", function(request, response) {
   var id = request.params.id;
   
   response.render("question", questions[id]);
-})
+});
 
 app.get("/finish", function(request, response) {
   response.render("finish", {
@@ -132,7 +130,7 @@ app.get("/finish", function(request, response) {
     subtitle: "de prijs kan worden opgehaald bij de organisatie",
     imageURL: "/cadeau.jpg"
   });
-})
+});
 
 var port = process.env.PORT || 5000;
 app.listen(port, "0.0.0.0", function() {
