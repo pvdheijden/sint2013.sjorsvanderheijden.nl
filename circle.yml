@@ -1,9 +1,9 @@
 machine:
   node:
-    version: 0.10
+    version: 4.2.1
 
 deployment:
   production:
     branch: master
     heroku:
-      appname: sint2013-sjors
+      appname: sint2013-sjorsvanderheijden-nl
