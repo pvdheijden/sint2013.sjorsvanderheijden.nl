@@ -1,23 +1,21 @@
-var _ = require("underscore");
-var async = require("async");
+const express = require("express");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const compression = require("compression");
 
-var express = require("express");
+const app = express();
+app.use(morgan("common"));
 
-var app = express();
-  app.use(express.logger("default"));
+app.use(bodyParser.json());
 
-  app.use(express.bodyParser());
+app.set('view engine', 'html');
+app.engine('html', require('hbs').__express);
+app.set("views", __dirname + "/views", { maxAge: 3600000 });
+app.use(express.static(__dirname + "/static", { maxAge: 365 * 86400000 }));
 
-  app.set('view engine', 'html');
-  app.engine('html', require('hbs').__express);
-  app.set("views", __dirname + "/views", { maxAge: 3600000 });
-  app.use(express.static(__dirname + "/static", { maxAge: 365 * 86400000 }));
+app.use(compression());
 
-  app.use(express.compress());
-
-  app.use(app.router);
-
-var questions = [
+const questions = [
 {
   title: "Ken je zelf!",
   subtitle: " ... of hoe andere jou denken te kennen",
@@ -119,7 +117,7 @@ app.get("/", function(request, response) {
 });
 
 app.get("/questions/:id", function(request, response) {
-  var id = request.params.id;
+  const id = request.params.id;
   
   response.render("question", questions[id]);
 });
@@ -132,7 +130,7 @@ app.get("/finish", function(request, response) {
   });
 });
 
-var port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 app.listen(port, "0.0.0.0", function() {
 	console.log("Listening on " + port);
 });

@@ -2,19 +2,15 @@
   "name": "sint2013.sjorsvanderheijden.nl",
   "description": "On-line suprise 2013 voor Sjors",
   "version": "1.0.0",
-  "engines": {
-    "node": "4.2.1",
-    "npm": "2.14.7"
-  },
   "scripts": {
     "test": "echo \"No test specified\" && exit 0",
     "start": "node web.js"
   },
   "dependencies": {
-    "underscore": "1.5.2",
-    "async": ">=0",
-    "express": "3.x",
-    "hbs": "2.4.0"
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "express": "^4.16.4",
+    "hbs": "^4.0.0",
+    "morgan": "^1.9.1"
   }
 }
-
