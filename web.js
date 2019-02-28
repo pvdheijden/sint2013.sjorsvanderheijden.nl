@@ -1,10 +1,12 @@
 const express = require("express");
 const morgan = require("morgan");
+const favicon = require("express-favicon");
 const bodyParser = require("body-parser");
 const compression = require("compression");
 
 const app = express();
 app.use(morgan("common"));
+app.use(favicon("favicon.ico");
 
 app.use(bodyParser.json());
 
