@@ -6,7 +6,7 @@ const compression = require("compression");
 
 const app = express();
 app.use(morgan("common"));
-app.use(favicon("favicon.ico");
+app.use(favicon("favicon.ico"));
 
 app.use(bodyParser.json());
 
